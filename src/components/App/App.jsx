@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import SearchIcon from "../../assets/search.svg";
 import "./App.css";
 import moviesUrl from "../../env.js";
+import MoviesCard from "../Main/MoviesCard";
 
 const API_URL = moviesUrl;
 
@@ -16,17 +17,21 @@ const movie1 = {
 };
 
 const App = () => {
+  const [movies, setMovies] = useState([]);
+
+  // its own function
   const searchMovies = async (title) => {
     const res = await fetch(`${API_URL}&s=${title}`);
     const data = await res.json();
 
-    console.log(data.Search);
+    setMovies(data.Search);
   };
 
   useEffect(() => {
     searchMovies("clifford");
   }, []);
 
+  console.log("movies ==>", movies);
   return (
     <>
       <main className="app">
@@ -35,35 +40,23 @@ const App = () => {
           <input
             type="text"
             placeholder="Search for movies"
-            value="Superman"
+            value="This was hard coded 😊"
             onChange={() => {}}
           />
           <img src={SearchIcon} alt="search" onClick={() => {}} />
         </section>
 
-        <section className="container">
-          <section className="movie">
-            <div>
-              <p>{movie1.Year}</p>
-            </div>
-
-            <div>
-              <img
-                src={
-                  movie1.Poster !== "N/A"
-                    ? movie1.Poster
-                    : "https://via.placeholder.com/400"
-                }
-                alt={movie1.Title}
-              />
-            </div>
-
-            <div>
-              <span>{movie1.Type}</span>
-              <h3>{movie1.Title}</h3>
-            </div>
+        {movies.length > 0 ? (
+          <section className="container">
+            {movies.map((singleMovieObj) => {
+              <MoviesCard />; // continue from here :)
+            })}
           </section>
-        </section>
+        ) : (
+          <div className="empty">
+            <h2>No movies found</h2>
+          </div>
+        )}
       </main>
     </>
   );
