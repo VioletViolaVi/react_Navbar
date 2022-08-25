@@ -3,35 +3,26 @@ import { useEffect, useState } from "react";
 import SearchIcon from "../../assets/search.svg";
 import "./App.css";
 import moviesUrl from "../../env.js";
-import MoviesCard from "../Main/MoviesCard";
+import MoviesCard from "../Main/MoviesCard/index";
 
 const API_URL = moviesUrl;
 
-const movie1 = {
-  Title: "Clifford the Big Red Dog",
-  Year: "2021",
-  imdbID: "tt2397461",
-  Type: "movie",
-  Poster:
-    "https://m.media-amazon.com/images/M/MV5BZGIxYTU5MzctY2MzNS00MTRhLWEwM2UtY2Q5Mzk3OTAzMzcwXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_SX300.jpg"
-};
-
 const App = () => {
-  const [movies, setMovies] = useState([]);
+  const [allMovies, setAllMovies] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   // its own function
   const searchMovies = async (title) => {
     const res = await fetch(`${API_URL}&s=${title}`);
     const data = await res.json();
 
-    setMovies(data.Search);
+    setAllMovies(data.Search);
   };
 
   useEffect(() => {
     searchMovies("clifford");
   }, []);
 
-  console.log("movies ==>", movies);
   return (
     <>
       <main className="app">
@@ -40,16 +31,22 @@ const App = () => {
           <input
             type="text"
             placeholder="Search for movies"
-            value="This was hard coded 😊"
-            onChange={() => {}}
+            value={searchTerm}
+            onChange={(e) => {
+              return setSearchTerm(e.target.value)
+            }}
           />
-          <img src={SearchIcon} alt="search" onClick={() => {}} />
+          <img src={SearchIcon} alt="search" onClick={() => {
+            return searchMovies(searchTerm);
+          }} />
         </section>
 
-        {movies.length > 0 ? (
+        {allMovies.length > 0 
+        ? (
           <section className="container">
-            {movies.map((singleMovieObj) => {
-              <MoviesCard />; // continue from here :)
+
+            {allMovies.map((singleObj) => {
+              return <MoviesCard singleObj={singleObj} key={singleObj.imdbID} />
             })}
           </section>
         ) : (
