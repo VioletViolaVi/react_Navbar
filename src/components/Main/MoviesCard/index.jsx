@@ -1,30 +1,29 @@
-const MoviesCard = ({movie1}) => {
+const MoviesCard = (props) => {
   return (
     <>
       <section className="movie">
         <div>
-          <p>{movie1.Year}</p>
-          <p>{movie1.imdbID}</p>
+          <p>{props.Year}</p>
+          <p>{props.imdbID}</p>
         </div>
 
         <div>
           <img
             src={
-              movie1.Poster !== "N/A"
-                ? movie1.Poster
+              props.Poster !== "N/A"
+                ? props.Poster
                 : "https://via.placeholder.com/400"
             }
-            alt={movie1.Title}
+            alt={props.Title}
           />
         </div>
 
         <div>
-          <span>{movie1.Type}</span>
-          <h3>{movie1.Title}</h3>
+          <span>{props.Type}</span>
+          <h3>{props.Title}</h3>
         </div>
       </section>
     </>
   );
 };
-
 export default MoviesCard;
