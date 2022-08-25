@@ -33,20 +33,32 @@ const App = () => {
             placeholder="Search for movies"
             value={searchTerm}
             onChange={(e) => {
-              return setSearchTerm(e.target.value)
+              return setSearchTerm(e.target.value);
             }}
           />
-          <img src={SearchIcon} alt="search" onClick={() => {
-            return searchMovies(searchTerm);
-          }} />
+          <img
+            src={SearchIcon}
+            alt="search"
+            onClick={() => {
+              return searchMovies(searchTerm);
+            }}
+          />
         </section>
 
-        {allMovies.length > 0 
-        ? (
+        {allMovies.length > 0 ? (
           <section className="container">
-
             {allMovies.map((singleObj) => {
-              return <MoviesCard singleObj={singleObj} key={singleObj.imdbID} />
+              return (
+                <MoviesCard
+                  // wholeObj={singleObj} // a shorter/faster way than below ;)
+                  key={singleObj.imdbID}
+                  Year={singleObj.Year}
+                  imdbID={singleObj.imdbID}
+                  Poster={singleObj.Poster}
+                  Title={singleObj.Title}
+                  Type={singleObj.Type}
+                />
+              );
             })}
           </section>
         ) : (
