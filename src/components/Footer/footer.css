@@ -1,0 +1,22 @@
+/*********************************************************** nav bar */
+.nav_bar {
+  background-color: #f9d3b4;
+  height: 9rem;
+  padding: 3.5rem 0;
+}
+
+.nav_bar ul {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  list-style: none;
+  justify-content: space-around;
+}
+
+.nav_bar li {
+  font-size: 1.7em;
+}
+
+.nav_bar li:hover {
+  color: #f0f0f0;
+  cursor: pointer;
+}
