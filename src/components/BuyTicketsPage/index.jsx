@@ -1,6 +1,6 @@
 import React from "react";
 
-const BuyTickets = () => {
+const BuyTicketsPage = () => {
   return (
     <>
       <h1>Buy Tickets Here</h1>
@@ -8,4 +8,4 @@ const BuyTickets = () => {
   );
 };
 
-export default BuyTickets;
+export default BuyTicketsPage;
