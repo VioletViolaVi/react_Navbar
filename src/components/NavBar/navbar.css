@@ -12,11 +12,13 @@
   justify-content: space-around;
 }
 
-.nav_bar li {
+.nav_bar li a {
   font-size: 1.7em;
+  color: #000;
+  text-decoration: none;
 }
 
-.nav_bar li:hover {
+.nav_bar li a:hover {
   color: #f0f0f0;
   cursor: pointer;
 }
