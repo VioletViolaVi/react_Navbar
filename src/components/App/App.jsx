@@ -3,10 +3,11 @@ import React from "react";
 
 import "./App.css";
 
-import AboutPage from "../AboutPage";
-import BuyTicketsPage from "../BuyTicketsPage";
 import NavBar from "../NavBar";
 import HomePage from "../HomePage";
+import BuyTicketsPage from "../BuyTicketsPage";
+import AboutPage from "../AboutPage";
+import Footer from "../Footer";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
       <HomePage />
       <AboutPage />
       <BuyTicketsPage />
+      <Footer />
     </>
   );
 };
