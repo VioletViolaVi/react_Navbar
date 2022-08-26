@@ -5,7 +5,7 @@ import "./App.css";
 
 import AboutPage from "../AboutPage";
 import BuyTicketsPage from "../BuyTicketsPage";
-import NavBar from "../Header/NavBar";
+import NavBar from "../NavBar";
 import HomePage from "../HomePage";
 
 const App = () => {
